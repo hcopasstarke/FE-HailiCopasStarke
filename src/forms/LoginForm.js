@@ -12,7 +12,7 @@ export default function LoginForm() {
     // set token in local storage (later)
     const [token, setToken] = useStoredLocalVal('token'); 
     if (token) {
-         return <Redirect to='/Dashboard' />;
+         return <Redirect to='/' />;
     }
     // if statement says that if you have a token (signed in), you can go to /recipe.
     // otherwise, render the registration form. 
@@ -40,8 +40,8 @@ export default function LoginForm() {
                         formikBag.resetForm()
                         // re-enables submit button
                         formikBag.setSubmitting(false)
-                        // redirects user to '/BucketList/
-                        formikBag.props.history.push('/');
+                        // redirects user Dashboard
+                        formikBag.props.history.push('/Dashboard');
                     })
                     .catch(error => {
                         // if request fails, logs error and re-enables submit button

@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './components/Home';
 import RegForm from './forms/RegForm';
-import LoginForm from './forms/LoginForm';
+// import LoginForm from './forms/LoginForm';
 import Dashboard from './components/Dashboard';
 
 import { Route } from "react-router-dom";
@@ -18,7 +18,7 @@ function App() {
     <div className='container'>
       <Route exact path="/" component={Home} />
       <Route path="/" component={RegForm} />
-      <PrivateRoute path="http://localhost:3000/Dashboard/" component={Dashboard} />
+      <PrivateRoute path="/Dashboard" component={Dashboard} />
     </div>
   );
 }
