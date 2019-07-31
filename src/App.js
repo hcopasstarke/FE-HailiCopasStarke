@@ -1,6 +1,10 @@
 import React from 'react';
+import Register from './forms/RegForm';
+
+import { Route } from 'react-router-dom';
+import { PrivateRoute } from './utils/PrivateRoute'
 import './App.css';
-import LoginForm from './components/LoginForm';
+
 
 function App() {
   return (
@@ -9,7 +13,7 @@ function App() {
         <h1>
           Bucket List App
         </h1>
-        <LoginForm />
+        <Register />
       </header>
     </div>
   );
