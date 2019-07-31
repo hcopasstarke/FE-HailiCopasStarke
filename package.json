@@ -35,7 +35,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "server": "nodemon src/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"

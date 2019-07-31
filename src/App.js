@@ -18,7 +18,7 @@ function App() {
   return (
     <div className='container'>
       <Route exact path="/" component={RegForm} />
-      <Route path="/login" component={LoginForm} />
+      <Route path="/" component={LoginForm} />
     </div>
   );
 }

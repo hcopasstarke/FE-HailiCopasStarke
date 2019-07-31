@@ -3,16 +3,16 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import {useStoredLocalVal} from '../hooks/useStoredLocalVal';
+import { useStoredLocalVal } from '../hooks/useStoredLocalVal';
 
-export default function RegForm() {
+export default function LoginForm() {
     // Created default thing to be exported from this component module.
     // Destructure returned array from default call to useStoredLocalVal hook.
     // Sets value of token to key 'token', second member of destructured array used to 
     // set token in local storage (later)
     const [token, setToken] = useStoredLocalVal('token'); 
     if (token) {
-         return <Redirect to='/BucketList' />;
+         return <Redirect to='/' />;
     }
     // if statement says that if you have a token (signed in), you can go to /recipe.
     // otherwise, render the registration form. 
@@ -41,7 +41,7 @@ export default function RegForm() {
                         // re-enables submit button
                         formikBag.setSubmitting(false)
                         // redirects user to '/BucketList/
-                        formikBag.props.history.push('/BucketList');
+                        formikBag.props.history.push('/');
                     })
                     .catch(error => {
                         // if request fails, logs error and re-enables submit button
