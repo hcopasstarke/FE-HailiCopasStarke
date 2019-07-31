@@ -8,6 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import reducer from './reducers';
+import "semantic-ui-css/semantic.min.css";
+
 
 const store = createStore(applyMiddleware(thunk, logger));
 
