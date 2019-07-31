@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import Header from "./components/Header";
-import NavBar from "./components/NavBar";
-import AppRouter from "./components/AppRouter";
-import { data } from "./data";
-import { dataComplete } from "./data-complete";
+import UserProfile from "./UserProfile";
+import BucketListMenu from "./BucketListMenu";
+import BucketListActions from "./BucketListActions";
+import { data } from "../data";
+import { dataComplete } from "../data-complete";
 
-function App() {
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import { useStoredLocalVal } from '../hooks/useStoredLocalVal';
+
+function Dashboard() {
   const [items, setItems] = useState(data);
   const [completedItems, setCompletedItems] = useState(dataComplete);
+/* const [token] = useStoredLocalVal('token')
+  //  retrieving value of key 'token' from local storage and setting to React state variable token
+
+
+  //  useEffect executed on first render, makes a request to backend to retrieve recipe data
+  useEffect(() => {
+      // axiosWithAuth retrieves axios object with preset authorization header
+      // then makes request to backend to get restricted recipe data
+      // then sets recipe data to React state object data to be mapped over and displayed on screen
+      axiosWithAuth(token)
+      .get('DATA-URL')
+      .then(response => {
+          setItems(response.data)
+      })
+      .catch(error => console.error('Error!', error))
+  // eslint-disable-next-line
+  }, []) */
 
   function addItem(item) {
     setItems([...items, item]);
@@ -47,9 +66,9 @@ function App() {
   console.log("completed items: ", completedItems);
   return (
     <main>
-      <Header />
-      <NavBar />
-      <AppRouter
+      <UserProfile />
+      <BucketListMenu />
+      <BucketListActions
         addItem={addItem}
         items={items}
         completedItems={completedItems}
@@ -61,4 +80,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dashboard;

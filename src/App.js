@@ -1,12 +1,11 @@
 import React from 'react';
+import Home from './components/Home';
 import RegForm from './forms/RegForm';
 import LoginForm from './forms/LoginForm';
-// import Recipe from './components/Recipe';
-
+import Dashboard from './components/Dashboard';
 
 import { Route } from "react-router-dom";
-// import { PrivateRoute } from './utils/PrivateRoute';
-import './App.css';
+import { PrivateRoute } from './utils/PrivateRoute';
 
 // Route is publicly accessible. PrivateRoute is only accessible with a token. 
 // We are passing components to Route and PrivateRoute to define what is rendered
@@ -17,11 +16,11 @@ function App() {
 
   return (
     <div className='container'>
-      <Route exact path="/" component={RegForm} />
-      <Route path="/" component={LoginForm} />
+      <Route exact path="/" component={Home} />
+      <Route path="/" component={RegForm} />
+      <PrivateRoute path="http://localhost:3000/Dashboard/" component={Dashboard} />
     </div>
   );
 }
 
 export default App;
-

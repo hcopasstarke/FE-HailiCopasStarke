@@ -2,10 +2,10 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import BucketList from "./BucketList";
-import CompletedList from "./CompletedList";
-import NewItem from "./NewItem";
+import BucketListComplete from "./BucketListComplete";
+import AddBucketItem from "./AddBucketItem";
 
-export default function AppRouter(props) {
+export default function BucketListActions(props) {
   return (
     <div className="page-view ui bottom attached segment active tab">
       <Switch>
@@ -24,7 +24,7 @@ export default function AppRouter(props) {
         <Route
           path="/completed"
           render={() => (
-            <CompletedList
+            <BucketListComplete
               {...props}
               items={props.completedItems}
               deleteItem={props.deleteItem}
@@ -33,7 +33,7 @@ export default function AppRouter(props) {
         />
         <Route
           path="/new"
-          render={() => <NewItem {...props} addItem={props.addItem} />}
+          render={() => <AddBucketItem {...props} addItem={props.addItem} />}
         />
       </Switch>
     </div>

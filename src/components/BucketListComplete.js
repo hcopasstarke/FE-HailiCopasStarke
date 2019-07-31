@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ItemCard from "./ItemCard";
+import BucketListCard from "./BucketListCard";
 
-export default function BucketList(props) {
+export default function BucketListComplete(props) {
   // const [items, setItems] = useState(data);
 
   //   setItems(data);
@@ -12,7 +12,7 @@ export default function BucketList(props) {
   return (
     <section className="bucket-list">
       {props.items.map(item => (
-        <ItemCard
+        <BucketListCard
           {...props}
           item={item}
           deleteItem={props.deleteItem}

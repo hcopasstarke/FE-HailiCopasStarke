@@ -12,7 +12,7 @@ export default function LoginForm() {
     // set token in local storage (later)
     const [token, setToken] = useStoredLocalVal('token'); 
     if (token) {
-         return <Redirect to='/' />;
+         return <Redirect to='/Dashboard' />;
     }
     // if statement says that if you have a token (signed in), you can go to /recipe.
     // otherwise, render the registration form. 

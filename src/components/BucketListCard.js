@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Image, Modal, Header } from "semantic-ui-react";
 
-export default function ItemCard(props) {
+export default function BucketListCard(props) {
   const [updatedItem, setUpdatedItem] = useState(props.item);
 
   function handleChange(event) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function ItemCard(props) {
+export default function BucketCard(props) {
   const [item, setItem] = useState({});
 
   function handleChange(event) {
