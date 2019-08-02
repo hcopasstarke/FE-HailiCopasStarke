@@ -5,29 +5,9 @@ import BucketListActions from "./BucketListActions";
 import { data } from "../data";
 import { dataComplete } from "../data-complete";
 
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import { useStoredLocalVal } from '../hooks/useStoredLocalVal';
-
 function Dashboard() {
   const [items, setItems] = useState(data);
   const [completedItems, setCompletedItems] = useState(dataComplete);
-/* const [token] = useStoredLocalVal('token')
-  //  retrieving value of key 'token' from local storage and setting to React state variable token
-
-
-  //  useEffect executed on first render, makes a request to backend to retrieve recipe data
-  useEffect(() => {
-      // axiosWithAuth retrieves axios object with preset authorization header
-      // then makes request to backend to get restricted recipe data
-      // then sets recipe data to React state object data to be mapped over and displayed on screen
-      axiosWithAuth(token)
-      .get('DATA-URL')
-      .then(response => {
-          setItems(response.data)
-      })
-      .catch(error => console.error('Error!', error))
-  // eslint-disable-next-line
-  }, []) */
 
   function addItem(item) {
     setItems([...items, item]);

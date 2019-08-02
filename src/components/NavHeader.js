@@ -30,7 +30,7 @@ class NavHeader extends Component {
             </Menu.Item>
             <Menu.Item
               as={Link}
-              to="/Login"
+              to="/LoginForm"
               name="login"
               active={activeItem === "login"}
               onClick={this.handleItemClick}

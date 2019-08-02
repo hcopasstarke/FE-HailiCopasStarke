@@ -2,18 +2,13 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { useStoredLocalVal } from '../hooks/useStoredLocalVal';
 
-export default function LoginForm() {
+export default function LoginForm(props) {
     // Created default thing to be exported from this component module.
     // Destructure returned array from default call to useStoredLocalVal hook.
     // Sets value of token to key 'token', second member of destructured array used to 
     // set token in local storage (later)
-    const [token, setToken] = useStoredLocalVal('token'); 
-    if (token) {
-         return <Redirect to='/' />;
-    }
+
     // if statement says that if you have a token (signed in), you can go to /recipe.
     // otherwise, render the registration form. 
 
@@ -30,18 +25,18 @@ export default function LoginForm() {
                 // formikBag update isSubmitting prop to indicate to user in the rendered view
                 // request is still in progress
                 formikBag.setSubmitting(true)
-                const url ='https://bw-bucket-list.herokuapp.com/api/login';
+                const url ='http://localhost:4040/api/login';
                 axios
                     .post(url, values)
                     .then(response => {  
                         // use setter from custom hook (declared above) to set token to local storage
-                        setToken('token', response.data.token)
+                        localStorage.setItem('token', response.data.token)
                         // resets form in case user logs out
                         formikBag.resetForm()
                         // re-enables submit button
                         formikBag.setSubmitting(false)
                         // redirects user Dashboard
-                        formikBag.props.history.push('/Dashboard');
+                        props.history.push('/Dashboard');
                     })
                     .catch(error => {
                         // if request fails, logs error and re-enables submit button

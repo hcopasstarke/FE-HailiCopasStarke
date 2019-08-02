@@ -2,24 +2,8 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { useStoredLocalVal } from '../hooks/useStoredLocalVal';
 
-export default function RegForm() {
-    // Created default thing to be exported from this component module.
-    // Destructure returned array from default call to useStoredLocalVal hook.
-    // Sets value of token to key 'token', second member of destructured array used to 
-    // set token in local storage (later)
-    const [token, setToken] = useStoredLocalVal('token'); 
-    if (token) {
-         return <Redirect to='/' />;
-    }
-    // if statement says that if you have a token (signed in), you can go to /recipe.
-    // otherwise, render the registration form. 
-
-    // used Formik component instead of withFormik (wrapper function that constructs React component) 
-    // because you can't use hooks outside of React component. 
-
+export default function RegForm(props) {
     return(
         <Formik
             initialValues={{ username: '', password: ''}}
@@ -30,18 +14,20 @@ export default function RegForm() {
                 // formikBag update isSubmitting prop to indicate to user in the rendered view
                 // request is still in progress
                 formikBag.setSubmitting(true)
-                const url ='https://bw-bucket-list.herokuapp.com/api/register';
+                const url ='http://localhost:4040/api/register';
                 axios
                     .post(url, values)
-                    .then(response => {  
+                    .then(response => {
+                        console.log(response)
+                        localStorage.setItem('token', response.data.token)  
                         // use setter from custom hook (declared above) to set token to local storage
-                        setToken('token', response.data.token)
                         // resets form in case user logs out
                         formikBag.resetForm()
                         // re-enables submit button
                         formikBag.setSubmitting(false)
                         // redirects user to '/Dashboard
-                        formikBag.props.history.push('/Dashboard');
+                        props.history.push('/Dashboard');
+                        formikBag.resetForm()
                     })
                     .catch(error => {
                         // if request fails, logs error and re-enables submit button
