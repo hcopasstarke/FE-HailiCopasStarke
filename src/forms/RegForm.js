@@ -26,7 +26,7 @@ export default function RegForm(props) {
                         // re-enables submit button
                         formikBag.setSubmitting(false)
                         // redirects user to '/Dashboard
-                        props.history.push('/Dashboard');
+                        props.history.push('/LoginForm');
                         formikBag.resetForm()
                     })
                     .catch(error => {
